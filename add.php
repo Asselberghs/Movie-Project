@@ -2,7 +2,6 @@
 echo '<link rel="stylesheet" type="text/css" href="style.css">';
 
 include('Connect.php');
-include('ErrorControl.php');
 include('AccessControl.php');
 echo '<form name="login" action="'.$_SERVER['PHP_SELF'].'" method="post">';
 echo '<p>Titel: <input type="text" name="Title"><br>';
@@ -19,29 +18,7 @@ echo '<input type="checkbox" name="FormatCheck[]" value="Blu-Ray">Blu-Ray<br />'
 echo '</p>';
 echo '<input type="submit" name="submit" value="Add">';
 
-$TitleErrCheckIn=$_POST['Title'];
-$Production_YearErrCheckIn=$_POST['Production_Year'];
-$GenreErrCheckIn=$_POST['Genre'];
-$ActorErrCheckIn=$_POST['Actor'];
-$DirectorErrCheckIn=$_POST['Director'];
-$PriceErrCheckIn=$_POST['Price'];
-
-
-
-$TitleErrCheck=ErrorControl($TitleErrCheckIn);
-$Production_YearErrCheck=ErrorControl($Production_YearErrCheckIn);
-$GenreErrCheck=ErrorControl($GenreErrCheckIn);
-$ActorErrCheck=ErrorControl($ActorErrCheckIn);
-$DirectorErrCheck=ErrorControl($DirectorErrCheckIn);
-$PriceErrCheck=ErrorControl($PriceErrCheckIn);
-
-if($TitleErrCheck==TRUE || $Production_YearErrCheck==TRUE || $GenreErrCheck==TRUE || $ActorErrCheck==TRUE || $DirectorErrCheck==TRUE || $PriceErrCheck==TRUE) {
-	
-	$ErrCheck=TRUE;
-}
-
-
-if(isset($_POST['submit']) && $_POST['Title']!='' && $_POST['Genre']!='' && $ErrCheck != TRUE){
+if(isset($_POST['submit']) && $_POST['Title']!='' && $_POST['Genre']!=''){
 
 $Title=$_POST['Title'];
 $Format=$_POST['FormatCheck'];
@@ -98,12 +75,6 @@ $titlecheck="";
 	
 }
 
-if ($ErrCheck==TRUE) {
-	
-	
-	echo '<p>Du har indtastet ugyldige karaktere</p>';
-	
-}
 
 else {
 	

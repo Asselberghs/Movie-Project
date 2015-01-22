@@ -2,7 +2,6 @@
 echo '<link rel="stylesheet" type="text/css" href="style.css">';
 
 include('Connect.php');
-include('ErrorControl.php');
 include('AccessControl.php');
 
 $Title=$_GET['Title'];
@@ -53,29 +52,7 @@ echo '<input type="hidden" name="ID" value="'.$ID.'"><br>';
 echo '<input type="submit" name="submit" value="Opdater">';
 
 
-$TitleErrCheckIn = $_POST['Title'];
-$Production_YearErrCheckIn = $_POST['Production_Year'];
-$ActorErrCheckIn = $_POST['Actor'];
-$DirectorErrCheckIn = $_POST['Director'];
-$GenreErrCheckIn = $_POST['Genre'];
-$PriceErrCheckIn = $_POST['Price'];
-$LoanerErrCheckIn = $_POST['Loaner'];
-
-$TitleErrCheck = ErrorControl($TitleErrCheckIn);
-$Production_YearErrCheck = ErrorControl($Production_YearErrCheckIn);
-$ActorErrCheck = ErrorControl($ActorErrCheckIn);
-$DirectorErrCheck = ErrorControl($DirectorErrCheckIn);
-$GenreErrCheck = ErrorControl($GenreErrCheckIn);
-$PriceErrCheck = ErrorControl($PriceErrCheckIn);
-$LoanerErrCheck = ErrorControl($LoanerErrCheckIn);
-
-if($TitleErrCheck==TRUE || $Production_YearErrCheck==TRUE || $ActorErrCheck==TRUE || $DirectorErrCheck==TRUE || $GenreErrCheck==TRUE || $PriceErrCheck==TRUE || $LoanerErrCheck==TRUE) {
-	
-	$ErrCheck = TRUE;
-}
-
-
-if(isset($_POST['submit']) && $_POST['Title']!='' && $_POST['Genre']!='' && $ErrCheck != TRUE){
+if(isset($_POST['submit']) && $_POST['Title']!='' && $_POST['Genre']!=''){
 
 $Title=$_POST['Title'];
 $Format=$_POST['FormatCheck'];
@@ -167,16 +144,9 @@ echo '<p>Filmen er blevet opdateret</p>';
 
 }
 
-if ($ErrCheck==TRUE) {
-	
-	
-	echo '<p>Du har indtastet ugyldige karaktere</p>';
-	
-}
-
 else {
 	
-		Echo '<p>Formen er tom, ingen data er indsaette</p>';
+		echo '<p>Formen er tom, ingen data er indsaette</p>';
 }
 
 ?>
