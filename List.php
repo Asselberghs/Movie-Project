@@ -1,21 +1,5 @@
 <?php
-/*
-    This is a media database to mange your Movies.
-    Copyright (C) 2013 Nick Tranholm Asselberghs
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 session_start();
 
 echo '<link rel="stylesheet" type="text/css" href="style.css">';
@@ -25,7 +9,7 @@ include('Connect.php');
 echo '<center>';
 echo '<table border="1">';
 echo '<tr>';
-echo '<td><p>Titel</p></td><td><p>Genre</p></td><td><p>Format</p></td><td><p>Productions Aar</p></td><td><p>Skuespillere</p></td><td><p>Instruktoeer</p></td>';
+echo '<td><p>Titel</p></td><td><p>Genre</p></td><td><p>Format</p></td><td><p>Productions Aar</p></td><td><p>Skuespillere</p></td><td><p>Instruktoeer</p></td><td><p>Ejer</p></td>';
 if(isset($_SESSION['Logged_In'])) {
 echo '<td><p>Pris</p></td>';	
 }
@@ -34,13 +18,15 @@ echo '</tr>';
 
 try{
     
-    $statement = $db->prepare('SELECT * FROM Movie');
+    $statement = $db->prepare('SELECT * FROM Movie ORDER BY Title');
     $statement->execute();
     
     while($row = $statement->fetch(PDO::FETCH_OBJ)) {
         if($row->Lend == 'Yes') {
             echo "<tr>";
-            echo "<td bgcolor='red'>$row->Title</td><td bgcolor='red'>$row->Genre</td><td bgcolor='red'>$row->Format</td><td bgcolor='red'>$row->Production_Year</td><td bgcolor='red'>$row->Actor</td><td bgcolor='red'>$row->Director</td>";
+            $User = $row->User;
+            $User = ucfirst($User);
+            echo "<td bgcolor='red'>$row->Title</td><td bgcolor='red'>$row->Genre</td><td bgcolor='red'>$row->Format</td><td bgcolor='red'>$row->Production_Year</td><td bgcolor='red'>$row->Actor</td><td bgcolor='red'>$row->Director</td><td bgcolor='red'>".$User."</td>";
             if(isset($_SESSION['Logged_In']))
             {
                 echo "<td bgcolor='red'>$row->Price</td>";
@@ -53,7 +39,9 @@ try{
         else {
         
         echo "<tr>";
-        echo "<td><p>$row->Title</p></td><td><p>$row->Genre</p></td><td><p>$row->Format</p></td><td><p>$row->Production_Year</p></td><td><p>$row->Actor</p></td><td><p>$row->Director</p></td>";
+        $User = $row->User;
+        $User = ucfirst($User);
+        echo "<td><p>$row->Title</p></td><td><p>$row->Genre</p></td><td><p>$row->Format</p></td><td><p>$row->Production_Year</p></td><td><p>$row->Actor</p></td><td><p>$row->Director</p></td><td>".$User."</td>";
         
             if(isset($_SESSION['Logged_In'])) 
             {
