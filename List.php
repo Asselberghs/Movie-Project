@@ -51,7 +51,7 @@ try{
                 echo "<td bgcolor='red'>$row->Price</td>";
             }
             if(isset($_SESSION['Logged_In'])) {
-                echo "<td bgcolor='red'><a href='update_display.php?Title=$row->Title&ID=$row->ID&Genre=$row->Genre&Production_Year=$row->Production_Year&Actor=$row->Actor&Director=$row->Director'>Edit</a></td><td bgcolor='red'><a href='delete_display.php?Title=$row->Title&ID=$row->ID'>Delete</a></td><td><p>$row->Loaner</p></td>";
+                echo "<td bgcolor='red'><a href='update_display.php?Title=$row->Title&ID=$row->ID&Genre=$row->Genre&Production_Year=$row->Production_Year&Actor=$row->Actor&Director=$row->Director&Price=$row->Price'>Edit</a></td><td bgcolor='red'><a href='delete_display.php?Title=$row->Title&ID=$row->ID'>Delete</a></td><td><p>$row->Loaner</p></td>";
             }
             echo "</tr>";
         }
@@ -68,7 +68,7 @@ try{
             }
             
             if(isset($_SESSION['Logged_In'])) {
-                echo "<td bgcolor='#808080'><a href='update_display.php?Title=$row->Title&ID=$row->ID&Genre=$row->Genre&Production_Year=$row->Production_Year&Actor=$row->Actor&Director=$row->Director'>Edit</a></td><td bgcolor='#808080'><a href='delete_display.php?Title=$row->Title&ID=$row->ID'>Delete</a></td>";
+                echo "<td bgcolor='#808080'><a href='update_display.php?Title=$row->Title&ID=$row->ID&Genre=$row->Genre&Production_Year=$row->Production_Year&Actor=$row->Actor&Director=$row->Director&Price=$row->Price'>Edit</a></td><td bgcolor='#808080'><a href='delete_display.php?Title=$row->Title&ID=$row->ID'>Delete</a></td>";
             }            
         echo "</tr>";
         }
