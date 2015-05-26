@@ -19,11 +19,11 @@
 ?>
 <?php 
 
-$dsn = 'mysql:dbname=AsselberghsMedia;host=188.121.44.159';
+$dsn = 'mysql:dbname=Database_Name;host=IP_Address';
 
-$user = 'AsselberghsMedia';
+$user = 'Username';
 
-$pass = 'r%zUW6MP7@f8Uz';
+$pass = 'Password';
 
 try {
     $db = new PDO($dsn, $user, $pass);
