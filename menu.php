@@ -24,7 +24,7 @@ echo '<a href="index.php">Forside</a> &#124; <a href="login_display.php">Login</
 
 if(isset($_SESSION['Logged_In'])){
 
-echo '&#124; <a href="add_display.php">Tilf&#248;j film</a> &#124; <a href="backup_display.php">Tag backup af database</a> &#124; <a href="restore_display.php">Gendan backup af database</a> &#124; <a href="Logout_display.php">Logout</a>';
+echo '&#124; <a href="add_display.php">Tilf&#248;j film</a> &#124; <a href="backup_display.php">Tag backup af database</a> &#124; <a href="restore_display.php">Gendan backup af database</a> &#124; <a href="add_user_display.php">Tilf&#248;j Bruger</a> &#124; <a href="Logout_display.php">Logout</a>';
 
 }
 ?>
