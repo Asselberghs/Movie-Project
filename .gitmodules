@@ -1,0 +1,3 @@
+[submodule "PHP-IMDb-Scraper"]
+	path = PHP-IMDb-Scraper
+	url = https://github.com/abhinayrathore/PHP-IMDb-Scraper
