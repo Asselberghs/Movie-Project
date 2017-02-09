@@ -24,19 +24,19 @@ include('Connect.php');
 include('ErrorControl.php');
 include('AccessControl.php');
 echo '<form name="login" action="'.$_SERVER['PHP_SELF'].'" method="post">';
-echo '<p>Titel: <input type="text" name="Title"><br>';
-echo 'Produktions Aar: <input type="text" name="Production_Year"><br>';
+echo '<p>Titel: <input type="text" name="Title"><br><br>';
+echo 'Produktions Aar: <input type="text" name="Production_Year"><br><br>';
 echo 'Skuespillere: <textarea rows="2" cols="20" name="Actor">';
-echo '</textarea><br>';
+echo '</textarea><br><br><br>';
 echo 'Instruktoeer: <textarea rows="2" cols="20" name="Director">';
-echo '</textarea><br>';
-echo 'Genre: <input type="text" name="Genre"><br>';
-echo 'Pris: <input type="text" name="Price"><br>';
-echo 'Format:';
+echo '</textarea><br><br><br>';
+echo 'Genre: <input type="text" name="Genre"><br><br>';
+echo 'Pris: <input type="text" name="Price"><br><br>';
+echo '<p>Format:</p>';
 echo '<input type="checkbox" name="FormatCheck[]" id="DVD" value="DVD"> <label for="DVD">DVD</label><br />';
 echo '<input type="checkbox" name="FormatCheck[]" id="Blu-Ray" value="Blu-Ray"> <label for="Blu-Ray">Blu-Ray</label><br />';
 echo '</p>';
-echo '<input type="submit" name="submit" value="Add">';
+echo '<input type="submit" name="submit" value="Add"><br />';
 
 $TitleErrCheckIn=$_POST['Title'];
 $Production_YearErrCheckIn=$_POST['Production_Year'];
@@ -55,7 +55,7 @@ $DirectorErrCheck=ErrorControl($DirectorErrCheckIn);
 $PriceErrCheck=ErrorControl($PriceErrCheckIn);
 
 if($TitleErrCheck==TRUE || $Production_YearErrCheck==TRUE || $GenreErrCheck==TRUE || $ActorErrCheck==TRUE || $DirectorErrCheck==TRUE || $PriceErrCheck==TRUE) {
-	
+
 	$ErrCheck=TRUE;
 }
 
@@ -82,9 +82,9 @@ try{
 $titlecheck="";
 
 
-	while($row = $Query_Check_Statement->fetch(PDO::FETCH_OBJ)) 
+	while($row = $Query_Check_Statement->fetch(PDO::FETCH_OBJ))
 		{
-		$titlecheck=$row->Title;		
+		$titlecheck=$row->Title;
 		}
 
 	if($titlecheck!=$Title){
@@ -98,35 +98,35 @@ $titlecheck="";
     $insert_statement->bindParam(':genre', $Genre, PDO::PARAM_STR);
     $insert_statement->bindParam(':price', $Price, PDO::PARAM_INT);
     $insert_statement->bindParam(':user', $_SESSION['User'], PDO::PARAM_STR);
-	
+
     try {
-        $insert_statement->execute();        
+        $insert_statement->execute();
     }catch(PDOException $e)
     {
-        echo $e->getMessage();    
+        echo $e->getMessage();
     }
 
 	echo '<p>Filmen er tilfoejet til databasen</p>';
 
-	} 
-	else 
-	{
-	
-	echo '<p>Filmen findes allerede i databasen</p>';
-	
 	}
-	
+	else
+	{
+
+	echo '<p>Filmen findes allerede i databasen</p>';
+
+	}
+
 }
 
 if ($ErrCheck==TRUE) {
-	
-	
+
+
 	echo '<p>Du har indtastet ugyldige karaktere</p>';
-	
+
 }
 
 else {
-	
+
 		echo '<p>Formen er tom, ingen data er indsaette</p>';
 }
 

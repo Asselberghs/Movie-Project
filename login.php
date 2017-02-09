@@ -24,8 +24,8 @@ include('Yubico.php');
 echo '<form name="login" action="'.$_SERVER['PHP_SELF'].'" method="post">';
 echo '<p>Brugernavn: <input type="text" name="user"><br>';
 echo 'Password: <input type="password" name="password"><br>';
-echo 'Yubikey: <input type="text" name="yubikey"><br>';
-echo '<input type="submit" name="submit" value="Submit">';
+echo 'Yubikey: <input type="text" name="yubikey"><br><br />';
+echo '<input type="submit" name="submit" value="Login">';
 
 $userErrCheckIn=$_POST['user'];
 $passErrCheckIn=$_POST['password'];

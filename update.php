@@ -41,35 +41,35 @@ try
     echo $e->getMessage();
 }
 
-while($row = $resultStatement->fetch(PDO::FETCH_OBJ)) 
+while($row = $resultStatement->fetch(PDO::FETCH_OBJ))
 {
 $Lend=$row->Lend;
 $Loaner=$row->Loaner;
 }
 
 echo '<form name="login" action="'.$_SERVER['PHP_SELF'].'" method="post">';
-echo '<p>Titel: </p><input type="text" name="Title" value="'.$Title.'"><br>';
-echo '<p>Produktions &Aring;r: </p><input type="text" name="Production_Year" value="'.$Production_Year.'"><br>';
+echo '<p>Titel: </p><input type="text" name="Title" value="'.$Title.'"><br><br>';
+echo '<p>Produktions &Aring;r: </p><input type="text" name="Production_Year" value="'.$Production_Year.'"><br><br>';
 echo '<p>Skuespillere: </p><textarea rows="2" cols="20" name="Actor">';
 echo $Actor;
-echo '</textarea><br>';
+echo '</textarea><br><br><br>';
 echo '<p>Instruktoeer: </p><textarea rows="2" cols="20" name="Director">';
 echo $Director;
-echo '</textarea><br>';
-echo '<p>Genre: </p><input type="text" name="Genre" value="'.$Genre.'"><br>';
+echo '</textarea><br><br><br>';
+echo '<p>Genre: </p><input type="text" name="Genre" value="'.$Genre.'"><br><br>';
 echo '<p>Format: </p>';
 echo '<input type="checkbox" name="FormatCheck[]" id="DVD" value="DVD"> <label for="DVD">DVD</label><br />';
 echo '<input type="checkbox" name="FormatCheck[]" id="Blu-Ray" value="Blu-Ray"> <label for="Blu-Ray">Blu-Ray</label><br />';
-echo '<p>Price: </p><input type="text" name="Price" value="'.$Price.'"><br>';
+echo '<p>Price: </p><input type="text" name="Price" value="'.$Price.'"><br><br>';
 
 echo '<p>Udlaant?</p><select name="Lend">';
 echo '<option value="Yes">Yes</option>';
 echo '<option value="No" selected="selected">No</option>';
-echo '</select><br>';
+echo '</select><br><br>';
 
-echo '<p>Udlaant til: </p><input type="text" name="Loaner" value="'.$Loaner.'">';
+echo '<p>Udlaant til: </p><input type="text" name="Loaner" value="'.$Loaner.'"><br><br>';
 echo '<input type="hidden" name="ID" value="'.$ID.'"><br>';
-echo '<input type="submit" name="submit" value="Opdater">';
+echo '<input type="submit" name="submit" value="Opdater"><br />';
 
 
 $TitleErrCheckIn = $_POST['Title'];
@@ -89,7 +89,7 @@ $PriceErrCheck = ErrorControl($PriceErrCheckIn);
 $LoanerErrCheck = ErrorControl($LoanerErrCheckIn);
 
 if($TitleErrCheck==TRUE || $Production_YearErrCheck==TRUE || $ActorErrCheck==TRUE || $DirectorErrCheck==TRUE || $GenreErrCheck==TRUE || $PriceErrCheck==TRUE || $LoanerErrCheck==TRUE) {
-	
+
 	$ErrCheck = TRUE;
 }
 
@@ -198,14 +198,14 @@ echo '<p>Filmen er blevet opdateret</p>';
 }
 
 if ($ErrCheck==TRUE) {
-	
-	
+
+
 	echo '<p>Du har indtastet ugyldige karaktere</p>';
-	
+
 }
 
 else {
-	
+
 		echo '<p>Formen er tom, ingen data er indsaette</p>';
 }
 
