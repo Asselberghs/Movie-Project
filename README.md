@@ -22,7 +22,3 @@ I have had good use of this for the last few years, I hope you will find it usef
 ### Who do I talk to? ###
 
 * Nick Asselberghs https://github.com/Asselberghs/
-
-### TODO ###
-
-* Merge the three databases to one class that can construct the database system for any purpose if it is at all possible.
